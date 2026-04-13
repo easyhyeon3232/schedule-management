@@ -45,8 +45,8 @@ Base URL : http://localhost:8080/schedule
 ```
 
 ### 일정 전체 조회
-일정을 전부 조회한다.
-- URL : ```/schedules```
+일정을 작성자명 기준으로 전부 조회한다.
+- URL : ```/schedules?name = 작성자명```
 - Endpoint : ```/schedules```
 - Method : ```GET```
 
@@ -54,7 +54,7 @@ Base URL : http://localhost:8080/schedule
 |----------|--------| --- |----------------|
 | title    | String | ✅ | 일정 제목          |
 | content  | String | ✅ | 일정 상세 내용       |
-| name     | String | ✅ | 작성한 사람의 이름     |
+| name     | String | ❌ | 작성한 사람의 이름     |
 | password | String | ✅ | 비밀번호           |
 | createDate | String | ✅ | 작성일 |
 | updateDate | String | ✅ | 수정일 |
@@ -67,19 +67,30 @@ none
 #### Response body
 응답 코드 : ```200 ok```
 ```
-{
-    "id" : 1,
+[
+    {
+        "id" : 1,
+        "title" : "일정 제목",
+        "content" : "일정 상세 내용",
+        "name" : "작성자명A",
+        "createDate" : "작성일",
+        "updateDate" : "수정일"
+    },
+    
+    {
+    "id" : 2,
     "title" : "일정 제목",
     "content" : "일정 상세 내용",
-    "name" : "작성자명",
+    "name" : "작성자명A",
     "createDate" : "작성일",
     "updateDate" : "수정일"
-}
+    }
+]    
 ```
 
 ### 일정 단 건 조회
-일정을 작성자명을 기준으로 조회한다.
-- URL : ```/schedules?name = 작성자명```
+일정을 단 건 조회한다.
+- URL : ```/schedules/{Id}```
 - Endpoint : ```/schedules/{Id}```
 - Method : ```GET```
 
