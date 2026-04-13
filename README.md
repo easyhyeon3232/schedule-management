@@ -14,7 +14,7 @@ Base URL : http://localhost:8080/schedule
 | name     | type   | Required | Description    |
 |----------|--------| --- |----------------|
 | title    | String | ✅ | 일정 제목          |
-| content  | String | ✅ | 일정 상세 내용       |
+| content  | String | ❌ | 일정 상세 내용       |
 | name     | String | ✅ | 작성한 사람의 이름     |
 | password | String | ✅ | 비밀번호           |
 | createDate | String | ✅ | 작성일 |
