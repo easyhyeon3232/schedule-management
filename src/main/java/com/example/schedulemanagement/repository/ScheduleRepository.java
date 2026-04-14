@@ -10,5 +10,6 @@ public interface ScheduleRepository extends JpaRepository<Schedule, Long> {
     // 이름 조건이 있을 때 사용할 메서드
     List<Schedule> findAllByNameOrderByUpdateDateDesc(String name);
 
+    // 이름 조건이 없을 때 사용할 메서드
     List<Schedule> findAllByOrderByUpdateDateDesc();
 }

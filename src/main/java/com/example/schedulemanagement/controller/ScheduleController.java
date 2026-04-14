@@ -1,12 +1,9 @@
 package com.example.schedulemanagement.controller;
 
-import com.example.schedulemanagement.dto.CreateScheduleResponseDto;
-import com.example.schedulemanagement.dto.CreatescheduleRequestDto;
-import com.example.schedulemanagement.dto.GetAllResponseDto;
+import com.example.schedulemanagement.dto.*;
+import com.example.schedulemanagement.entity.Schedule;
 import com.example.schedulemanagement.service.ScheduleService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,6 +36,30 @@ public class ScheduleController {
         List<GetAllResponseDto> getAllResponseDto = scheduleService.findAllByName(name);
         return ResponseEntity.status(HttpStatus.OK).body(getAllResponseDto);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<GetOneScheduleResponseDto> getOne(@PathVariable Long id) {
+        GetOneScheduleResponseDto getOneScheduleResponseDto = scheduleService.getOneSchedule(id);
+        return ResponseEntity.status(HttpStatus.OK).body(getOneScheduleResponseDto);
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<UpdateScheduleResponseDto> update(@PathVariable Long id, @RequestBody UpdateScheduleRequestDto requestDto) {
+        UpdateScheduleResponseDto updateScheduleResponseDto = scheduleService.updateSchedule(id, requestDto);
+        return ResponseEntity.status(HttpStatus.OK).body(updateScheduleResponseDto);
+    }
+
+
+    // 업데이트 부터 하고 나머지 작성
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        scheduleService.deleteSchedule(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+
+
+
 
 
 }
